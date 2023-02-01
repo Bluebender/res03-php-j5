@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <!--Encodage des caractères-->
+    <meta charset="utf-8">
+    <!--Titre affiché dans l'onglet-->
+    <title>Calculatrice</title>
+
+    <!--Taille de l'écran-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--Lien vers la feuille de style-->
+    <link rel="stylesheet" href="assets/styles/css/style.css">
+    <!--Librairie Fontawesome-->
+    <script src="https://kit.fontawesome.com/dbf8b52bf4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <main>
+        <h1>Ma calculatrice</h1>    
+        <form action="index.php" method="post">
+            <fieldset>
+                <input type="text" name="firstNumber"/>
+            </fieldset>
+            
+            <fieldset>
+                <select name="operation">
+                    <option value=" "> </option>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                    <option value="%">%</option>
+                    <option value="^">^</option>
+                    <option value="f">f</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <select name="calcule">
+                    <option value=" "> </option>
+                    <option value="rectangle">Surface d'un rectangle</option>
+                    <option value="triangleRectangle">Surface d'un triangle rectangle</option>
+                    <option value="triangleNormal">Surface d'un triangle normal</option>
+                    <option value="cercle">Surface d'un cercle</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <input type="text" name="secondNumber"/>
+            </fieldset>
+            
+            <fieldset>
+                <input type="submit" value="="/>
+            </fieldset>
+            
+            
+        </form>
+        
+    </main>
+
+</body>
+</html>
