@@ -20,6 +20,7 @@ $db = new PDO(
 require 'User.php';
 
 // Exercice 1
+echo "Exercice 1";
 $user = [
     "firstName" => "Clark",
     "lastName" => "Kent",
@@ -28,13 +29,11 @@ $user = [
 
 $user1 = new User($user["firstName"], $user["lastName"], $user["email"]);
 
-echo "Exercice 1";
 var_dump($user1);
 
 
-
 // Exercice 2
-echo "Exercice 2 <br>";
+echo "Exercice 2";
 // J'importe mon user 1 from DB
 $query = $db->prepare('SELECT * FROM `users` WHERE id=1');
 $query->execute();
@@ -45,8 +44,36 @@ $user2 = new User($firstUser["first_name"], $firstUser["last_name"], $firstUser[
 
 // J'importe l'ID
 $user2->setId($firstUser["id"]);
-echo "Instance de l'utilisateur importer de la DB avec l'ID importé";
 var_dump($user2);
+
+
+// Exercice 3
+echo "Exercice 3";
+
+$query = $db->prepare('SELECT * FROM `users`');
+$query->execute();
+$usersTab = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$NewUserTab=[];
+foreach ($usersTab as $user){
+    $userToAdd = new User($user["first_name"], $user["last_name"], $user["email"]);
+    $userToAdd->setId($user["id"]);
+    $NewUserTab[] = $userToAdd;
+}
+
+var_dump($NewUserTab);
+
+// Exercice 4
+echo "Exercice 4";
+
+
+$query = $db->prepare('INSERT INTO users VALUES (null, :value1, :value2, :value3)');
+$parameters = [
+'value1' => $user1->getFirstName(),
+'value2' => $user1->getLastName(),
+'value3' => $user1->getEmail()
+];
+$query->execute($parameters);
 
 
 ?>
